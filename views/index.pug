@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #[strong #[em Super Villains Wiki]]
+
+	h1 Dynamic Content
+
+	if error
+		p There is an error fetching the data : #{error}
+	else
+		p The Den of Evil has the following number of villains : 
+
+		ul
+			li #[strong Villains:] !{data.villains_count} 

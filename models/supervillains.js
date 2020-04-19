@@ -20,7 +20,7 @@ var SuperVillainSchema = new Schema({
 SuperVillainSchema
 	.virtual('url')
 	.get(function () {
-  return '/catalog/supervillain/' + this._id;
+  return '/supervillain/' + this._id;
 });
 
 module.exports = mongoose.model('SuperVillain', SuperVillainSchema);

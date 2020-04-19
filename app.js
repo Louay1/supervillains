@@ -37,6 +37,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// ROUTES USAGE
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/den', denRouter);
@@ -60,4 +62,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(5555, ()=> console.log(`Port running 5555`))
 module.exports = app;

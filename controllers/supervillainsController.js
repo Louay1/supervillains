@@ -1,13 +1,24 @@
 var SuperVillain = require('../models/supervillains.js');
 
+const async = require('async')
 // Home Page  index()
 exports.index = function(req, res){
-	res.send('Not implemented : Home Page')
+	async.parallel({
+		villains_count: function(callback){
+			SuperVillain.countDocuments({}, callback)
+		}
+	}, function(err, results){
+		if (err) return err
+		res.render('index', {title: "What we have!", error: err, data: results}) 
+	})
 }
 
 // All Super Villains List
 exports.supervillain_list = function(req, res){
-	res.send('Not implemented: Super Villains List')
+	SuperVillain.find({}, 'villanName superPower').exec(function(err, SVList){
+			if(err) return err
+			res.render('SVList', {title: 'Super Villains List', supervillain_list: SVList})
+		})
 }
 
 // All Super Villain Details

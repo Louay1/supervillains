@@ -25,7 +25,7 @@ router.get('supervillain/:id/delete', supervillains_controller.supervillain_dele
 router.post('supervillain/:id/delete', supervillains_controller.supervillain_delete_post)
 
 // Get all list of supervillains
-router.get('supervillains/all', supervillains_controller.supervillain_list)
+router.get('/supervillains', supervillains_controller.supervillain_list)
 
 // Get a supervillain details
 router.get('supervillain/:id', supervillains_controller.supervillain_detail)
