@@ -1,13 +1,13 @@
 extends layout
 
+
 block content
 	h1= title
 	ul
-		- supervillain_list.sort(function(a,b){let textA = a.villanName.toUpperCase(); textB = b.villanName.toUpperCase(); return (textA < textB) ? -1 : (textA>textB) ? 1 : 0;})
 		each villain in supervillain_list
 			li 
-				a(href=villan.url) #{villain.villanName}
-				| ( #{villain.superPower} )
+				a(href="villain.url") #{villain.villanName}
+				|  ( #{villain.superPower} )
 
 		else
 			li 

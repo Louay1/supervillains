@@ -14,9 +14,11 @@ exports.index = function(req, res){
 }
 
 // All Super Villains List
-exports.supervillain_list = function(req, res){
-	SuperVillain.find({}, 'villanName superPower').exec(function(err, SVList){
-			if(err) return err
+exports.supervillain_list = function(req, res, next){
+	var query = SuperVillain.find({}, '_id villanName superPower')
+		.populate('_id')
+		.exec(function(err, SVList){
+			if(err) {return next(err)}
 			res.render('SVList', {title: 'Super Villains List', supervillain_list: SVList})
 		})
 }

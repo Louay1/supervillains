@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var SuperVillainSchema = new Schema({
+	_id: Schema.Types.ObjectId,
 	name: String,
 	villanName: String,
 	birthDate: Date,
@@ -20,7 +21,7 @@ var SuperVillainSchema = new Schema({
 SuperVillainSchema
 	.virtual('url')
 	.get(function () {
-  return '/supervillain/' + this._id;
+  return '/all/' + this._id;
 });
 
 module.exports = mongoose.model('SuperVillain', SuperVillainSchema);
